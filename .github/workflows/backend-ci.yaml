@@ -29,7 +29,7 @@ jobs:
           python -m pytest tests/
 
   deploy:
-    needs: test            #only runs if test job suceeds
+    needs: test            #only runs if test job suceeds/
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'  #optional extra safety
     steps:
