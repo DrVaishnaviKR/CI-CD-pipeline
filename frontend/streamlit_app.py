@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_URL = "https://ci-cd-pipeline-qboe.onrender.com/predict"
+API_URL = os.getenv("BACKEND_URL", "https://ci-cd-pipeline-qboe.onrender.com/predict")
 
 st.set_page_config(page_title="House Price Predictor", layout="centered")
 
@@ -31,3 +31,5 @@ if st.button("Predict Price"):
 
     except Exception as e:
         st.error(f"Connection error: {e}")
+
+#Trigger
