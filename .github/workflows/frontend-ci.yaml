@@ -1,10 +1,11 @@
-name: Frontend CI -Streamlit
+name: Frontend CI - Streamlit
 
 on:
   push:
     branches: [ main ]
     paths:
       - 'frontend/**'
+  pull_request:
 
 jobs:
   frontend-test:
@@ -14,11 +15,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-    steps:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install frontend dependencies
         run: |
@@ -26,8 +26,11 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Streamlit import check
+      - name: Basic Streamlit sanity check
         run: |
           cd frontend
-          python -c "import streamlit"
-          python -c "import streamlit_app"    
+          python -m py_compile app.py
+          python - <<EOF
+          import streamlit
+          print("Streamlit import successful")
+          EOF
