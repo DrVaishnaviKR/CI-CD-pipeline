@@ -29,7 +29,7 @@ jobs:
       - name: Basic Streamlit sanity check
         run: |
           cd frontend
-          python -m py_compile app.py
+          python -m py_compile streamlit_app.py
           python - <<EOF
           import streamlit
           print("Streamlit import successful")
