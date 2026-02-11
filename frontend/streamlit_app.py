@@ -33,3 +33,4 @@ if st.button("Predict Price"):
         st.error(f"Connection error: {e}")
 
 #Trigger
+#Trigger 2
